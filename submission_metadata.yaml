@@ -21,7 +21,7 @@ team_members:
 # ============================================================================
 github_repo: "https://github.com/SRIKRISH-S/RecruiterBrain"
 
-sandbox_link: "https://huggingface.co/spaces/SRIKRISH-S/RecruiterBrain"
+sandbox_link: "https://huggingface.co/spaces/SRI-KRISHNA7/RecruiterBrain"
 
 reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
 
