@@ -294,7 +294,7 @@ else:
                 <div class="metric-value">{len(candidates)}</div>
                 <div style="font-size: 0.8rem; color: #9ca3af;">Total Candidates</div>
             </div>
-            """, unsafe_allow_input_html=True)
+            """, unsafe_allow_html=True)
         with col2:
             st.markdown(f"""
             <div class="card">
@@ -302,7 +302,7 @@ else:
                 <div class="metric-value">{elapsed_t:.4f}s</div>
                 <div style="font-size: 0.8rem; color: #9ca3af;">Processing Time</div>
             </div>
-            """, unsafe_allow_input_html=True)
+            """, unsafe_allow_html=True)
         with col3:
             st.markdown(f"""
             <div class="card">
@@ -310,7 +310,7 @@ else:
                 <div class="metric-value">{honeypots_caught}</div>
                 <div style="font-size: 0.8rem; color: #9ca3af;">Impossible Profiles Filtered</div>
             </div>
-            """, unsafe_allow_input_html=True)
+            """, unsafe_allow_html=True)
         with col4:
             st.markdown(f"""
             <div class="card">
@@ -318,7 +318,7 @@ else:
                 <div class="metric-value">{stuffers_caught}</div>
                 <div style="font-size: 0.8rem; color: #9ca3af;">Penalized Keyword Stuffers</div>
             </div>
-            """, unsafe_allow_input_html=True)
+            """, unsafe_allow_html=True)
             
         # Display Leaderboard
         st.markdown("### 🏆 Candidate Leaderboard")
