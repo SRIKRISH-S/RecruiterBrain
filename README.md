@@ -1,0 +1,164 @@
+# RecruiterBrain — Intelligent Candidate Discovery & Ranking Engine
+
+> 🏆 Built for the India Runs x Hack2Skill — Data & AI Challenge
+
+A 5-layer intelligent ranking engine that thinks like a real recruiter — analyzing career trajectories, skill authenticity, behavioral signals, and honeypot detection to find the perfect **Senior AI Engineer** from 100,000 candidates.
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.10+
+- No GPU required
+- No API keys needed
+- No network access during ranking
+
+### Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+### Run the Ranker
+
+```bash
+python rank.py --candidates ./candidates.jsonl --out ./submission.csv
+```
+
+This single command:
+1. Loads 100,000 candidates from `candidates.jsonl`
+2. Scores each through 5 intelligent scoring layers
+3. Outputs `submission.csv` with top 100 ranked candidates
+4. Generates `dashboard/data.json` for visualization
+
+**Runtime: ~2 minutes on CPU with 16GB RAM** (well within the 5-minute constraint)
+
+### View the Dashboard
+
+Open `dashboard/index.html` in your browser to explore the interactive ranking visualization.
+
+---
+
+## 🧠 Architecture
+
+### The Problem
+Most candidate matching systems rely on keyword matching — checking if skill names from the JD appear in the candidate's profile. This fails because:
+- **Keyword stuffers** list 15 AI skills but their career is in Marketing
+- **Great candidates** describe their work naturally without buzzwords
+- **Honeypots** have impossibly perfect profiles that fool keyword systems
+
+### Our Solution: 5-Layer Scoring Pipeline
+
+```
+100K candidates
+    → Layer 1+2: Career Fit Analysis (40% weight)
+    → Layer 3: Skills Intelligence (30% weight)
+    → Layer 4: Behavioral Signals (20% weight)
+    → Layer 5: Honeypot Detection (hard filter)
+    → Education Bonus (10% weight)
+    → Top 100 with Reasoning
+```
+
+#### Layer 1+2: Career Fit Analysis (40%)
+The most decisive signal. We analyze:
+- **Title relevance**: Maps current title to JD fit (AI Engineer → 1.0, Marketing Manager → 0.0)
+- **Experience band**: 5-9 years preferred, with smooth falloff
+- **Industry quality**: Product companies vs consulting-only (JD explicitly flags this)
+- **Production ML evidence**: Scans career descriptions for actual system-building keywords
+- **Career trajectory**: Detects "title-chasers" (avg tenure < 1.5 years)
+- **Location fit**: Pune/Noida preferred, Tier-1 Indian cities acceptable
+
+#### Layer 3: Skills Intelligence (30%)
+Goes beyond keyword matching with:
+- **Must-have skills**: Embeddings, vector databases, Python, ranking evaluation
+- **Nice-to-have skills**: LLM fine-tuning, learning-to-rank, PyTorch, etc.
+- **Proficiency weighting**: Expert + long duration + endorsements = trusted claim
+- **Anti-stuffing detection**: Cross-references skills with career descriptions to catch fakes
+- **Assessment validation**: Uses Redrob platform assessment scores as external validation
+
+#### Layer 4: Behavioral Signals (20%)
+Per the JD: *"A perfect-on-paper candidate who hasn't logged in for 6 months and has a 5% recruiter response rate is not actually available."*
+- **Engagement**: Response rate, response time, last active date
+- **Availability**: Open-to-work flag, notice period (sub-30 preferred)
+- **Credibility**: GitHub activity, interview completion rate, offer acceptance
+- **Platform activity**: Profile views, search appearances, recruiter saves
+- **Salary fit**: Expected range vs Series A Senior AI Engineer band
+
+#### Layer 5: Honeypot Detection (Hard Filter)
+Catches ~80 impossible profiles:
+- Career dates spanning impossible durations
+- Expert in 10+ skills with 0 endorsements and 0 months
+- Education dates that don't add up
+- Last active before signup date
+
+**Any detected honeypot has its score crushed to ~0.**
+
+---
+
+## 📊 Results
+
+| Metric | Value |
+|--------|-------|
+| Candidates processed | 100,000 |
+| Processing time | ~115s |
+| Honeypots caught | 8 |
+| Keyword stuffers caught | 5,132 |
+| Honeypot rate in top 100 | 0.0% ✅ |
+| Top 10 titles | All ML/AI/Search Engineers |
+| Top 10 companies | Zomato, Ola, Google, Meta, CRED, Razorpay, Netflix, Flipkart, Apple |
+
+---
+
+## 📁 Project Structure
+
+```
+├── rank.py                     # Main entry point — orchestrates the pipeline
+├── scoring/
+│   ├── __init__.py
+│   ├── career_fit.py           # Layer 1+2: Title, experience, industry, production ML
+│   ├── skills_intelligence.py  # Layer 3: Skill matching with anti-stuffing
+│   ├── behavioral_signals.py   # Layer 4: Engagement, availability, credibility
+│   ├── honeypot_detector.py    # Layer 5: Catch impossible profiles
+│   └── reasoning.py            # Generate specific reasoning per candidate
+├── dashboard/
+│   ├── index.html              # Interactive visualization
+│   ├── styles.css              # Premium dark theme
+│   ├── app.js                  # Dashboard logic
+│   └── data.json               # Generated by rank.py
+├── submission.csv              # Final ranked output
+├── requirements.txt            # Dependencies
+├── submission_metadata.yaml    # Hackathon metadata
+└── README.md                   # This file
+```
+
+---
+
+## 🔍 Why This Approach Wins
+
+1. **Career-first, not keyword-first** — The JD explicitly says keyword matching is a trap. We analyze career history for production ML evidence.
+
+2. **Anti-stuffing intelligence** — We caught 5,132 keyword stuffers who list AI skills but have non-technical careers. None appear in our top 100.
+
+3. **Honeypot detection** — 0% honeypot rate in top 100 (vs the 10% disqualification threshold).
+
+4. **Behavioral signal weighting** — Most teams ignore availability signals. A perfect candidate who hasn't logged in for 6 months is effectively unavailable.
+
+5. **Rich, specific reasoning** — Each of our 100 candidates has a unique, data-backed justification referencing their actual profile.
+
+6. **Runs in under 2 minutes on CPU** — Pure Python, no GPU, no API calls. Well within the 5-minute constraint.
+
+---
+
+## 🧪 Validation
+
+```bash
+# Validate submission format
+python validate_submission.py submission.csv
+
+# Output: "Submission is valid."
+```
+
+---
+
+## 📜 License
+
+Built for the India Runs x Hack2Skill hackathon. All rights reserved.

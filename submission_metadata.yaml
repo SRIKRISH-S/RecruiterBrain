@@ -1,0 +1,78 @@
+# Redrob Hackathon — Submission Metadata
+# RecruiterBrain — Intelligent Candidate Discovery & Ranking Engine
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "RecruiterBrain"
+
+primary_contact:
+  name: "SRIKRISHNA S"
+  email: "krishn9706@gmail.com"
+  phone: "+91-XXXXXXXXXX"
+
+team_members:
+  - name: "SRIKRISHNA S"
+    email: "krishn9706@gmail.com"
+    role: "Full Stack AI Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/SRIKRISH-S/RecruiterBrain"
+
+sandbox_link: "https://huggingface.co/spaces/SRIKRISH-S/RecruiterBrain"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Windows PC"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.13"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+ai_tools_used:
+  - "Gemini"
+
+ai_usage_summary: |
+  Used Gemini for architecture discussion and code scaffolding.
+  All scoring logic, weights, and candidate evaluation rules were
+  designed based on careful analysis of the JD and dataset.
+  No candidate data was fed to any LLM during ranking.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  5-layer rule-based scoring engine with explicit reasoning capture.
+  Layer 1+2 (40%): Career fit — title relevance, experience band,
+  industry quality (product vs consulting), production ML evidence from
+  career descriptions. Layer 3 (30%): Skills intelligence with anti-
+  keyword-stuffing detection cross-referencing endorsements, duration,
+  and career descriptions. Layer 4 (20%): Behavioral signal multiplier
+  covering engagement, availability, GitHub activity, and salary fit.
+  Layer 5: Honeypot detection catching impossible profiles via date
+  contradictions and zero-evidence expert claims. Education bonus (10%).
+  Runtime ~115 seconds for 100K candidates on CPU. No external APIs,
+  no GPU, no network during ranking.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

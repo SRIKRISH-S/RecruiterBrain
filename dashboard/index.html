@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecruiterBrain — Intelligent Candidate Ranking Dashboard</title>
+    <meta name="description" content="AI-powered candidate discovery and ranking engine for the India Runs Hack2Skill hackathon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-brand">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <circle cx="16" cy="16" r="14" stroke="url(#logo-grad)" stroke-width="2.5"/>
+                    <path d="M10 16C10 12 13 9 16 9C19 9 22 12 22 16" stroke="url(#logo-grad)" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="16" cy="16" r="3" fill="url(#logo-grad)"/>
+                    <path d="M16 19V24" stroke="url(#logo-grad)" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                        <linearGradient id="logo-grad" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#a855f7"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="brand-name">RecruiterBrain</span>
+        </div>
+        <div class="nav-links">
+            <a href="#overview" class="nav-link active" data-section="overview">Overview</a>
+            <a href="#pipeline" class="nav-link" data-section="pipeline">Pipeline</a>
+            <a href="#rankings" class="nav-link" data-section="rankings">Rankings</a>
+            <a href="#analysis" class="nav-link" data-section="analysis">Analysis</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="overview">
+        <div class="hero-content">
+            <div class="hero-badge">India Runs x Hack2Skill — Data & AI Challenge</div>
+            <h1 class="hero-title">
+                <span class="gradient-text">Intelligent</span> Candidate
+                <br>Discovery & Ranking
+            </h1>
+            <p class="hero-subtitle">
+                A 5-layer AI scoring engine that thinks like a recruiter — analyzing career trajectories,
+                skill authenticity, behavioral signals, and honeypot detection to find the perfect
+                <strong>Senior AI Engineer</strong> from 100,000 candidates.
+            </p>
+            <div class="hero-stats" id="hero-stats">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-total">—</div>
+                    <div class="stat-label">Candidates Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-honeypots">—</div>
+                    <div class="stat-label">Honeypots Caught</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-stuffers">—</div>
+                    <div class="stat-label">Keyword Stuffers</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-time">—</div>
+                    <div class="stat-label">Processing Time</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pipeline Section -->
+    <section class="section" id="pipeline">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">5-Layer <span class="gradient-text">Scoring Pipeline</span></h2>
+                <p class="section-desc">Each candidate flows through 5 intelligent scoring layers before final ranking</p>
+            </div>
+
+            <div class="pipeline-flow">
+                <div class="pipeline-step" data-step="1">
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 7L9.5 17.5 4 12"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">Layer 1+2</div>
+                        <h3>Career Fit Analysis</h3>
+                        <p>Title relevance, experience band (5-9yr), industry quality, production ML evidence in career descriptions. Penalizes consulting-only, title-chasers, and pure researchers.</p>
+                        <div class="step-weight">Weight: 40%</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" data-step="2">
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">Layer 3</div>
+                        <h3>Skills Intelligence</h3>
+                        <p>JD-specific must-have/nice-to-have matching with anti-keyword-stuffing. Cross-references endorsements, duration, and career descriptions to catch fake claims.</p>
+                        <div class="step-weight">Weight: 30%</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" data-step="3">
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">Layer 4</div>
+                        <h3>Behavioral Signals</h3>
+                        <p>Engagement (response rate, activity recency), availability (notice period, open-to-work), GitHub activity, interview reliability, and salary fit.</p>
+                        <div class="step-weight">Weight: 20%</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" data-step="4">
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">Layer 5</div>
+                        <h3>Honeypot Detection</h3>
+                        <p>Catches ~80 impossible profiles: impossible career dates, expert skills with zero evidence, behavioral contradictions. Rate >10% = disqualification.</p>
+                        <div class="step-weight">Hard Filter</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step final" data-step="5">
+                    <div class="step-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-number">Output</div>
+                        <h3>Top 100 with Reasoning</h3>
+                        <p>Final ranked CSV with specific, honest, non-templated reasoning referencing actual candidate data points and JD requirements.</p>
+                        <div class="step-weight">Result</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rankings Section -->
+    <section class="section section-dark" id="rankings">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Top <span class="gradient-text">Ranked Candidates</span></h2>
+                <p class="section-desc">The top 100 candidates for "Senior AI Engineer — Founding Team" at Redrob AI</p>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="search-box">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                    </svg>
+                    <input type="text" id="search-input" placeholder="Search candidates by name, title, company...">
+                </div>
+                <div class="filter-chips">
+                    <button class="chip active" data-filter="all">All</button>
+                    <button class="chip" data-filter="top10">Top 10</button>
+                    <button class="chip" data-filter="top25">Top 25</button>
+                    <button class="chip" data-filter="top50">Top 50</button>
+                </div>
+            </div>
+
+            <!-- Candidate Cards -->
+            <div class="candidates-grid" id="candidates-grid">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Candidate Detail Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="candidate-modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-content" id="modal-content">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Analysis Section -->
+    <section class="section" id="analysis">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Scoring <span class="gradient-text">Analysis</span></h2>
+                <p class="section-desc">How the scoring dimensions distribute across the top candidates</p>
+            </div>
+
+            <div class="analysis-grid">
+                <div class="analysis-card" id="score-breakdown-card">
+                    <h3>Score Breakdown — Top 10</h3>
+                    <div class="chart-container" id="score-breakdown-chart"></div>
+                </div>
+                <div class="analysis-card" id="dimension-card">
+                    <h3>Dimension Distribution</h3>
+                    <div class="chart-container" id="dimension-chart"></div>
+                </div>
+                <div class="analysis-card full-width" id="title-dist-card">
+                    <h3>Title Distribution in Top 100</h3>
+                    <div class="chart-container" id="title-chart"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="brand-name">RecruiterBrain</span>
+                    <p>Built for India Runs x Hack2Skill — Data & AI Challenge</p>
+                </div>
+                <div class="footer-tech">
+                    <h4>Built With</h4>
+                    <p>Pure Python scoring engine | No GPU | No API calls | &lt;5 min runtime on CPU</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
