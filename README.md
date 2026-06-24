@@ -1,3 +1,12 @@
+---
+title: RecruiterBrain
+emoji: 🧠
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # RecruiterBrain — Intelligent Candidate Discovery & Ranking Engine
 
 > 🏆 Built for the India Runs x Hack2Skill — Data & AI Challenge
