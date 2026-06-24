@@ -83,7 +83,7 @@ st.markdown("""
     .badge-danger { background-color: #dc2626; color: white; }
     .badge-info { background-color: #2563eb; color: white; }
 </style>
-""", unsafe_allow_input_html=True)
+""", unsafe_allow_html=True)
 
 # Application Header
 st.title("🧠 RecruiterBrain Sandbox")
@@ -444,7 +444,7 @@ else:
                     
                     bg_color = "#3b82f6" if lvl == "expert" else "#10b981" if lvl == "intermediate" else "#6b7280"
                     skills_html += f'<span class="badge" style="background-color: {bg_color}; color: white; margin-bottom: 5px;">{name} ({lvl}, {dur}m, {ends}⭐)</span>'
-                st.markdown(skills_html, unsafe_allow_input_html=True)
+                st.markdown(skills_html, unsafe_allow_html=True)
                 
                 # Experience section
                 st.write("**Work Experience:**")
