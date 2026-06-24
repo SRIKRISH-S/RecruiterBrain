@@ -361,10 +361,10 @@ else:
         csv_data = io.StringIO()
         writer = csv.writer(csv_data)
         writer.writerow(["candidate_id", "score", "reasoning"])
-        for r in results:
+        for rank, r in enumerate(results, 1):
             cand = r["candidate"]
             scores = r["scores"]
-            reasoning = generate_reasoning(cand, scores)
+            reasoning = generate_reasoning(cand, scores, rank)
             writer.writerow([r["candidate_id"], round(r["final_score"], 6), reasoning])
             
         st.download_button(
@@ -417,7 +417,7 @@ else:
                     
                 # Explain reasoning
                 st.markdown("#### 🤖 AI Recruiter Reasoning")
-                reasoning = generate_reasoning(cand, scores)
+                reasoning = generate_reasoning(cand, scores, idx + 1)
                 st.info(reasoning)
                 
             with col_r:
